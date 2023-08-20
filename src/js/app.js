@@ -546,6 +546,48 @@ checkRegistration: async()=>
       // {
       //   alert("The registrations are closed")
       // }
+      app.post("/auth/register", async (req, res1) => {    
+        const { name, email, password, passwordConfirm } = req.body
+        
+      
+    
+        // Now that you have the values query the database to check if the email is on the server. 
+        //That way, a user cannot register multiple times with the same email:
+        var result = db.query('SELECT email FROM users WHERE email = ?', [email], async (error, res) => {
+            
+                // If there is an error while executing the query
+                if(error){
+                    console.log(error)
+                }
+    
+                if( result.length >0 ) {
+                    return res1.render('register', {
+                        message: 'This email is already in use'
+                    })
+                } 
+    
+                // COMFIRM PASSWORD AND PASSWORD MUST MATCH
+                else if(password !== passwordConfirm) {               
+                    return res1.render('register', {
+                        message: 'Passwords do not match!'
+                    })
+                }
+    
+                //encrypting password
+                let hashedPassword = await bcrypt.hash(password, 8)
+    
+                db.query('INSERT INTO users SET?', {name: name, email: email, password: hashedPassword}, (error, res) => {
+                    if(error) {
+                        console.log(error)
+                    } else {
+                        return res1.render('register', {
+                            message: 'User registered!'
+                        })
+                    }
+                })
+         })
+    })
+    
 },
 
 generateOTP: async()=>
