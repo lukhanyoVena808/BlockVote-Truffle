@@ -1,5 +1,4 @@
 var mysql = require('mysql');
-
 // Database 1-> Candidate ID AND Vote counts
 var conn = mysql.createConnection({
     host: 'localhost', // assign your host name

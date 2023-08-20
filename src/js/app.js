@@ -1,35 +1,6 @@
-// Database preperation
-const express = require('express');
-const mysql = require("mysql");
-const dotenv = require('dotenv')
-
-const app = express();
-
-// // enviroment values
-// dotenv.config({ path: './.env'})
-
-// access variables
-const db = mysql.createConnection({
-  host: 'localhost', // assign your host name
-  user: 'root',      //  assign your database username
-  password: '@158410Xx',      // assign your database password
-  database: 'logindb' // assign database Name
-})
-
-// connecting database
-db.connect((error) => {
-    if(error) {
-        console.log(error)
-    } else {
-        console.log("MySQL connected!")
-    }
-});
-
-
-let App = 
+const db = require('../../database')
+App = 
 {
-
-
   load: async () => {
     await App.loadWeb3()
     await App.loadAccount()
@@ -424,154 +395,157 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 },
- checkLogin: async()=>{
-  var account = web3.currentProvider.selectedAddress
-  var r = document.getElementById("vvid").value;
-  var secret_message = document.getElementById("sec_msg").value;
-  var secret_number = document.getElementById("sec_num").value;
+ checkLogin: async()=> 
+  {
+      // var account = web3.currentProvider.selectedAddress
+      // var r = document.getElementById("vvid").value;
+      // var secret_message = document.getElementById("sec_msg").value;
+      // var secret_number = document.getElementById("sec_num").value;
 
-  var pass= secret_message.concat(secret_number)
-  console.log(pass)
-  //const content = $('#newTask').val()
-  var hash_new = await App.voting.testKeccak(pass)
-  console.log(hash_new)
-  var v = await App.voting.voters(r);
-  var x = await App.voting.voterids(account);
-  var currentTime= Math.floor(new Date().getTime()/1000.0);
-  var svd= await App.voting.startVote();
-  var evd= await App.voting.endVote();
-  //var check = x[2].localeCompare(secret_message)
-  console.log(x[1])
-  //v[3]==true && v[0] == x[0] && 
-  if(currentTime>svd && currentTime<=evd)
-   {
-     if(v[3]==false) alert("You are not registered")
-     else if(x[0]==r)
-     {
-  if (v[3]==true && hash_new == x[1])
-  {
-    alert("You have successfully logged in");
-    document.getElementById("loginDiv").style.display = "none";
-    document.getElementById("canDiv").style.display = "block";
-    // var account = web3.currentProvider.selectedAddress
-    // console.log(account)
-  $("#ID").html("Your account ID: "+v[4]);
-    await App.renderCandidates();
-  }
-  else
-  {
-    App.login_attempts=App.login_attempts-1;
-    if(App.login_attempts==0)
-    {
-     alert("No Login Attempts Available");
-      document.getElementById("loginDiv").style.display = "none";
-      document.getElementById("blocked").style.display = "block";
-      document.getElementById("vvid").disabled=true;
-      document.getElementById("sec_msg").disabled=true;
-      document.getElementById("sec_num").disabled=true;
-      document.getElementById("login").disabled=true;
+      // var pass= secret_message.concat(secret_number)
+      // console.log(pass)
+      // //const content = $('#newTask').val()
+      // var hash_new = await App.voting.testKeccak(pass)
+      // console.log(hash_new)
+      // var v = await App.voting.voters(r);
+      // var x = await App.voting.voterids(account);
+      // var currentTime= Math.floor(new Date().getTime()/1000.0);
+      // var svd= await App.voting.startVote();
+      // var evd= await App.voting.endVote();
+      //var check = x[2].localeCompare(secret_message)
+      // console.log(x[1])
+      //v[3]==true && v[0] == x[0] && 
+      // if(currentTime>svd && currentTime<=evd)
       
-    }
-    else
-    {
-     alert("Sorry, Wrong Credentials, Login Failed Now Only "+App.login_attempts+" Login Attempts Available");
-    }
-  }
-}
-else
-{
-  alert("Metamask account doesn't match with the registered account")
-}
-}
-else if(currentTime>evd)
-  {
-   alert("Voting period is over :( ");
-  }
-  else
-  {
-    alert("Voting is not started yet.")
-    console.log(v[1])
-  }
-
-   },
-
- voteForCandidate: async()=> {
-     var r = document.getElementById("vvid").value;
-     var v = await App.voting.voters(r);
-    var account = await App.voting.voters(r)[4];
-    console.log(account)
-     $("#ID").html(account);
-    if(v[1]==true)
-    {
-      alert("You have already voted");
-      document.getElementById("canDiv").style.display = "none";
-      document.getElementById("thankyou").style.display = "block";
-    }
-    else
-    {
-    //var e = document.getElementById("candidate").value;
-    var ele = document.getElementsByName('ok'); 
+      // {
+            // if(v[3]==false) alert("You are not registered")
+            // else if(x[0]==r)
+            // {
+          // if (true)  //CHANGED HERE (v[3]==true && hash_new == x[1]) 
+          // {
+          //   alert("You have successfully logged in");
+          //   document.getElementById("loginDiv").style.display = "none";
+          //   document.getElementById("canDiv").style.display = "block";
+          //   // var account = web3.currentProvider.selectedAddress
+          //   // console.log(account)
+          // $("#ID").html("Your account ID: "+v[4]);
+          //   await App.renderCandidates();
+          // }
+          // else
+          // {
+          //   App.login_attempts=App.login_attempts-1;
+          //   if(App.login_attempts==0)
+          //   {
+          //   alert("No Login Attempts Available");
+          //     document.getElementById("loginDiv").style.display = "none";
+          //     document.getElementById("blocked").style.display = "block";
+          //     document.getElementById("vvid").disabled=true;
+          //     document.getElementById("sec_msg").disabled=true;
+          //     document.getElementById("sec_num").disabled=true;
+          //     document.getElementById("login").disabled=true;
               
-            for(i = 0; i < ele.length; i++) { 
-                if(ele[i].checked) 
-                var e = ele[i].value; 
-            } 
-    console.log("e:"+e)
-    //var candidateName = e;  
-    await App.voting.vote(e);
-    document.getElementById("canDiv").style.display = "none";
-    document.getElementById("thankyou").style.display = "block";
-    //alert("Thank you for Voting!")
-    //{from: account} 
-    }
- 
- },
+          //   }
+          //   else
+          //   {
+          //   alert("Sorry, Wrong Credentials, Login Failed Now Only "+App.login_attempts+" Login Attempts Available");
+          //   }
+          // }
+        // }
+        // else
+        // {
+        //   alert("Metamask account doesn't match with the registered account")
+        // }
+      // }
+
+    // else if(currentTime>evd)
+    //   {
+    //   alert("Voting period is over :( ");
+    //   }
+    //   else
+    //   {
+    //     alert("Voting is not started yet.")
+    //     console.log(v[1])
+    //   }
+
+      },
+
+    voteForCandidate: async()=> {
+        var r = document.getElementById("vvid").value;
+        var v = await App.voting.voters(r);
+        var account = await App.voting.voters(r)[4];
+        console.log(account)
+        $("#ID").html(account);
+        if(v[1]==true)
+        {
+          alert("You have already voted");
+          document.getElementById("canDiv").style.display = "none";
+          document.getElementById("thankyou").style.display = "block";
+        }
+        else
+        {
+        //var e = document.getElementById("candidate").value;
+        var ele = document.getElementsByName('ok'); 
+                  
+                for(i = 0; i < ele.length; i++) { 
+                    if(ele[i].checked) 
+                    var e = ele[i].value; 
+                } 
+        console.log("e:"+e)
+        //var candidateName = e;  
+        await App.voting.vote(e);
+        document.getElementById("canDiv").style.display = "none";
+        document.getElementById("thankyou").style.display = "block";
+        //alert("Thank you for Voting!")
+        //{from: account} 
+        }
+    
+  },
 
 checkRegistration: async()=>
 {
-  var vid1 = document.getElementById("Voterid").value;
-  var vt = await App.voting.voters(vid1); 
-  console.log(vid1);
-  console.log(vt[0]);
-  var currentTime= Math.floor(new Date().getTime()/1000.0);
-  var svd= await App.voting.startVote();
-  var evd= await App.voting.endVote();
-  if (currentTime<svd)
-  {
-  if(vid1==null || vid1=="")
-  alert("Enter vid");
-else if(vt[0]==0)
-{
-  alert("You are not a valid voter");
-}
-else if (vt[3]==true)
-{
-  alert("You are already registered");
-}
-  else
-  {
-    App.generateOTP();
-  // var ref = App.db.collection("orders").doc(vid);
+      //   var vid1 = document.getElementById("Voterid").value;
+      //   var vt = await App.voting.voters(vid1); 
+      //   console.log(vid1);
+      //   console.log(vt[0]);
+      //   var currentTime= Math.floor(new Date().getTime()/1000.0);
+      //   var svd= await App.voting.startVote();
+      //   var evd= await App.voting.endVote();
+      //   if (currentTime<svd)
+      //   {
+      //   if(vid1==null || vid1=="")
+      //   alert("Enter vid");
+      // else if(vt[0]==0)
+      // {
+      //   alert("You are not a valid voter");
+      // }
+      // else if (vt[3]==true)
+      // {
+      //   alert("You are already registered");
+      // }  
+      //   else
+      //   {
+      //     App.generateOTP();
+        // var ref = App.db.collection("orders").doc(vid);
 
-  // ref.get().then(function(doc) {
-  //     if (doc.exists) {
-  //         alert("Voter already registered");
-  //     } else {
-  //       App.generateOTP();
-  //     }
-  // }).catch(function(error) {
-  //     console.log("Error getting document:", error);
-  // });
-  }
-}
-else if(currentTime>evd)
-{
-  alert("Voting period is over")
-}
-else
-{
-  alert("The registrations are closed")
-}
+        // ref.get().then(function(doc) {
+        //     if (doc.exists) {
+        //         alert("Voter already registered");
+        //     } else {
+        //       App.generateOTP();
+        //     }
+        // }).catch(function(error) {
+        //     console.log("Error getting document:", error);
+        // });
+      //   }
+      // }
+      // else if(currentTime>evd)
+      // {
+      //   alert("Voting period is over")
+      // }
+      // else
+      // {
+      //   alert("The registrations are closed")
+      // }
 },
 
 generateOTP: async()=>
@@ -861,10 +835,8 @@ console.log("current" + currentTime)
 }
 
 
-// $(() => {
-//   $(window).load(() => {
-//     App.load()
-//   })
-// })
-
-App.init();
+$(function() {
+  $(window).load(function() {
+    App.init();
+  });
+});
