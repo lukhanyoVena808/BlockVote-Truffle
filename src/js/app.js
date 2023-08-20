@@ -1,12 +1,34 @@
-App = 
+// Database preperation
+const express = require('express');
+const mysql = require("mysql");
+const dotenv = require('dotenv')
+
+const app = express();
+
+// // enviroment values
+// dotenv.config({ path: './.env'})
+
+// access variables
+const db = mysql.createConnection({
+  host: 'localhost', // assign your host name
+  user: 'root',      //  assign your database username
+  password: '@158410Xx',      // assign your database password
+  database: 'logindb' // assign database Name
+})
+
+// connecting database
+db.connect((error) => {
+    if(error) {
+        console.log(error)
+    } else {
+        console.log("MySQL connected!")
+    }
+});
+
+
+let App = 
 {
-  loading: false,
-  contracts: {},
-  db:firebase.firestore(),
-  gen_otp:null,
-  secretMsg:null, refNo:0,
-  login_attempts: 3,
-  qOTP:null, eOTP:null, resend:0, re_email:null,mins: 15,secs:15 * 60,startDate:0,endDate:0,
+
 
   load: async () => {
     await App.loadWeb3()
@@ -837,8 +859,12 @@ console.log("current" + currentTime)
 
 
 }
-$(() => {
-  $(window).load(() => {
-    App.load()
-  })
-})
+
+
+// $(() => {
+//   $(window).load(() => {
+//     App.load()
+//   })
+// })
+
+App.init();

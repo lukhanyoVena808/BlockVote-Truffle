@@ -7,8 +7,6 @@
     <title>Register - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <style>
         /* The Modal (background) */
@@ -60,12 +58,12 @@
                         <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;assets_home/img/img5.jpeg&quot;);"></div>
                     </div>
                     <div class="col-lg-7">
-                        <div class="p-5"> 
+                        <div class="p-5">
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Register to Vote!</h4>
                             </div>
                             <!-- onSubmit="App.checkOTP(); return false;" -->
-                    <!-- <form onSubmit="App.modalDisplay(); return false;" class="user">
+                            <form onSubmit="App.modalDisplay(); return false;" class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="Voterid" placeholder="Valid Voter's ID"></div>
                                     <div class="col-sm-6"><button onclick="App.checkRegistration(); return false;" class="btn btn-primary btn-block text-white btn-user" id="genOTP" type="submit">Send OTP</button></div>
@@ -75,9 +73,9 @@
                             </form>
                             <div class="text-center"><a class="small" href="#" onclick="App.resendOTP(); return false;"  id="resendOTP">Resend OTP?</a></div>
                             <div class="text-center"><a class="small" href="login.html">Already have registered? Login!</a></div>
-                            <div id="myModal" class="modal">                -->
+                            <div id="myModal" class="modal">
                                 <!-- Modal content -->
-                                <!-- <div class="modal-content">
+                                <div class="modal-content">
                                   
                                   <p>Please click "Confirm" on the Metamask Dialog Box for all future popups for successful registration.</p>
                                   <span class="close" class="text-center">Yes, I got it.</span>
@@ -94,26 +92,7 @@
                                     </div>
                                     <a href="#" onclick="App.secretEmail()" class="btn btn-primary" id="genOTP">Send Mail</a>
                                    
-                        </div>  -->
-                        <form action="/auth/register" method="POST">
-                            <div class="mb-3">
-                                <label for="name-reg" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name-reg" name="name">                        
-                            </div>
-                            <div class="mb-3">
-                                <label for="email-reg" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email-reg" name="email">                        
-                            </div>
-                            <div class="mb-3">
-                                <label for="password-reg" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password-reg" name="password">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password-conf-reg" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="password-conf-reg" name="passwordConfirm">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

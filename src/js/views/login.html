@@ -73,18 +73,17 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Welcome! Let's Vote</h4>
                                     </div>
-                                        <form action="/auth/register" method="POST">
-                                            <div class="mb-3">
-                                                <label for="name-reg" class="form-label">Name</label>
-                                                <input type="text" class="form-control" id="name-reg" name="name">                        
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="password-reg" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="password-reg" name="password">
-                                            </div>
-                        
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </form>
+                                    <form onSubmit="App.checkLogin(); return false;" class="user">
+                                        <div class="form-group"><input class="form-control form-control-user" type="text" id="vvid" aria-describedby="emailHelp" placeholder="Enter your Voter's id..." name="vid"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="text" id="sec_msg" placeholder="Secret Message" name="sec_msg"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="text" id="sec_num" placeholder="Reference Number" name="sec_num"></div>
+                                        <div class="form-group">
+                                            <!-- <div class="custom-control custom-checkbox small">
+                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                            </div> -->
+                                        </div><button class="btn btn-primary btn-block text-white btn-user" type="submit">Login</button>
+                                        <hr>
+                                    </form>
                                     <!-- <div class="text-center"><a class="small" href="register.html">Create an Account!</a></div> -->
                                 </div>
                             </div>
