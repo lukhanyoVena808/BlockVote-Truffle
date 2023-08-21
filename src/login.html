@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets_home/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+    <link rel="stylesheet" href="assets_home/fonts/font-awesome.min.css">
     <style>
         #thankyou {
             display: none;
@@ -20,7 +26,7 @@
         }
         /* The Modal (background) */
         .modal {
-        display: none; /* Hidden by default */
+       display: none;  /*Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
         left: 0;
@@ -55,11 +61,29 @@
         text-decoration: none;
         cursor: pointer;
         }
+
+       
+        #loginDiv{
+            margin-top: 300px;
+        }
     </style>
 </head>
 
 <body class="bg-gradient-primary">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
+        <div class="sidebar-brand-icon rotate-n-15"><img class="rounded-circle img-fluid" height="70px" width="70px" src="assets_home/img/comm.jpg"></div>
+        <div class="container"><a class="navbar-brand" href="#page-top">E-VoteZ</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto text-uppercase">
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="index.html">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="register.html">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container" id="loginDiv">
+        
         <div class="row justify-content-center">
             <div class="col-md-9 col-lg-12 col-xl-10">
                 <div class="card shadow-lg o-hidden border-0 my-5">

@@ -503,7 +503,8 @@ btn.onclick = function() {
 
 checkRegistration: async()=>
 {
-      //   var vid1 = document.getElementById("Voterid").value;
+        // var vid1 = document.getElementById("name-reg").value;
+
       //   var vt = await App.voting.voters(vid1); 
       //   console.log(vid1);
       //   console.log(vt[0]);
@@ -548,9 +549,8 @@ checkRegistration: async()=>
       // }
       app.post("/auth/register", async (req, res1) => {    
         const { name, email, password, passwordConfirm } = req.body
+        console.log(name)
         
-      
-    
         // Now that you have the values query the database to check if the email is on the server. 
         //That way, a user cannot register multiple times with the same email:
         var result = db.query('SELECT email FROM users WHERE email = ?', [email], async (error, res) => {
@@ -562,14 +562,14 @@ checkRegistration: async()=>
     
                 if( result.length >0 ) {
                     return res1.render('register', {
-                        message: 'This email is already in use'
+                        message: "<h1> already registered </h1>"
                     })
                 } 
     
                 // COMFIRM PASSWORD AND PASSWORD MUST MATCH
                 else if(password !== passwordConfirm) {               
                     return res1.render('register', {
-                        message: 'Passwords do not match!'
+                        message:  "<h1> password dont match </h1>"
                     })
                 }
     
@@ -581,7 +581,7 @@ checkRegistration: async()=>
                         console.log(error)
                     } else {
                         return res1.render('register', {
-                            message: 'User registered!'
+                            message:  "<h1> Helllo registered </h1>"
                         })
                     }
                 })
