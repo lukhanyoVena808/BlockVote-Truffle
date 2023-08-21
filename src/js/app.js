@@ -503,7 +503,8 @@ btn.onclick = function() {
 
 checkRegistration: async()=>
 {
-        // var vid1 = document.getElementById("name-reg").value;
+        // var vid1 = document.getElementById("name-reg").value;\
+       
 
       //   var vt = await App.voting.voters(vid1); 
       //   console.log(vid1);

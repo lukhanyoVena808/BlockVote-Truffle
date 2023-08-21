@@ -15,6 +15,7 @@ document.getElementById("counter").style.display = "none";
 function checkRegistration()
 {
 
+  window.alert("Hello");
 
   vid = document.getElementById("Voterid").value;
   if(vid==null || vid=="")
