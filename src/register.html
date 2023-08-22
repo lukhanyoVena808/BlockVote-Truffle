@@ -89,36 +89,10 @@
                             </div>
                             <!-- onSubmit="App.checkOTP(); return false;" -->
                     <!-- <form onSubmit="App.modalDisplay(); return false;" class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="Voterid" placeholder="Valid Voter's ID"></div>
-                                    <div class="col-sm-6"><button onclick="App.checkRegistration(); return false;" class="btn btn-primary btn-block text-white btn-user" id="genOTP" type="submit">Send OTP</button></div>
-                                </div>
-                                <div class="form-group"><input class="form-control form-control-user" type="text" id="otp" aria-describedby="emailHelp" placeholder="Enter the OTP" name="otp"></div>
-                                <button id="register" class="btn btn-primary btn-block text-white btn-user" type="submit">Register Account</button>
-                            </form>
-                            <div class="text-center"><a class="small" href="#" onclick="App.resendOTP(); return false;"  id="resendOTP">Resend OTP?</a></div>
-                            <div class="text-center"><a class="small" href="login.html">Already have registered? Login!</a></div>
-                            <div id="myModal" class="modal">                -->
-                                <!-- Modal content -->
-                                <!-- <div class="modal-content">
-                                  
-                                  <p>Please click "Confirm" on the Metamask Dialog Box for all future popups for successful registration.</p>
-                                  <span class="close" class="text-center">Yes, I got it.</span>
-                                </div>
                               
-                              </div>
-                            <div>
-                                    <span id="instruction"></span>
-                                    <br>
-                                    <span id="secret_msg"> </span>
-                                    <br>
-                                    <span id="secret_no"> </span>
-                                    <br>
-                                    </div>
-                                    <a href="#" onclick="App.secretEmail()" class="btn btn-primary" id="genOTP">Send Mail</a>
-                                   
-                        </div>  -->
-                        <form action="/auth/register" method="POST">
+                            </form>
+                          -->
+                        <form onSubmit="App.modalDisplay(); return false;">
                             <div class="mb-3">
                                 <label for="name-reg" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name-reg" name="name">                        
